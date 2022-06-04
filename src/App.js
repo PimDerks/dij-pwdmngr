@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import PasswordForm from "./components/PasswordForm";
+import "./App.css";
+import PasswordList from "./components/PasswordList";
 
 function App() {
+  const onSubmit = (e) => {
+    console.log("on submit");
+  };
+
+  const passwords = [
+    {
+      id: 1,
+      name: "Test",
+      password: "password",
+      client: 1,
+    },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PasswordForm onSubmit={onSubmit} />
+      <PasswordList passwords={passwords} />
     </div>
   );
 }

@@ -9,7 +9,7 @@ const PasswordForm = ({ onSubmit }) => {
   const { clients } = useContext(AppContext);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [clientId, setClientId] = useState(clients.length ? clients[0].id : "");
+  const [clientId, setClientId] = useState("");
 
   const onSubmitEvent = (e) => {
     e.preventDefault();
@@ -53,6 +53,11 @@ const PasswordForm = ({ onSubmit }) => {
       return { value: c.id, label: c.name };
     }),
   };
+
+  // Set default client id, otherwise this will only update onChange.
+  if (clients.length && !clientId) {
+    setClientId(clients[0].id);
+  }
 
   const buttonConfig = {
     label: "Submit",

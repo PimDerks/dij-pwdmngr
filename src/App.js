@@ -1,27 +1,18 @@
-import PasswordForm from "./components/PasswordForm";
 import "./App.css";
-import PasswordList from "./components/PasswordList";
+import AppState from "./context/AppState";
+import UserState from "./context/UserState";
+import PasswordManager from "./containers/PasswordManager";
 
-function App() {
-  const onSubmit = (e) => {
-    console.log("on submit");
-  };
-
-  const passwords = [
-    {
-      id: 1,
-      name: "Test",
-      password: "password",
-      client: 1,
-    },
-  ];
-
+const App = () => {
   return (
     <div className="App">
-      <PasswordForm onSubmit={onSubmit} />
-      <PasswordList passwords={passwords} />
+      <AppState>
+        <UserState>
+          <PasswordManager />
+        </UserState>
+      </AppState>
     </div>
   );
-}
+};
 
 export default App;

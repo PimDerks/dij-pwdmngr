@@ -1,12 +1,10 @@
 import { useState } from "react";
 
-const PasswordInput = ({ id, label, required, onChange }) => {
-  const [value, setValue] = useState("");
+const PasswordInput = ({ id, label, value, required, onChange }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const onChangeEvent = (e) => {
-    onChange();
-    setValue(e.target.value);
+    onChange(e);
   };
 
   const onClickPasswordToggle = () => {

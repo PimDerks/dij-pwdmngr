@@ -1,4 +1,14 @@
-const PasswordListItem = ({ id, name, password, client }) => {
+import Button from "../input/Button";
+
+const PasswordListItem = ({ id, name, password, client, onRemove }) => {
+  const buttonRemoveConfig = {
+    label: "Remove",
+    onClick: (e) => {
+      if (onRemove) {
+        onRemove({ id, name, password, client });
+      }
+    },
+  };
   return (
     <div>
       <dl>
@@ -11,6 +21,7 @@ const PasswordListItem = ({ id, name, password, client }) => {
         <dt>Client</dt>
         <dd>{client}</dd>
       </dl>
+      <Button {...buttonRemoveConfig} />
     </div>
   );
 };

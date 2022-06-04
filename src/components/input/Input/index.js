@@ -1,11 +1,6 @@
-import { useState } from "react";
-
-const Input = ({ id, label, placeholder, type, required, onChange }) => {
-  const [value, setValue] = useState("");
-
+const Input = ({ id, value, label, placeholder, type, required, onChange }) => {
   const onChangeEvent = (e) => {
-    onChange();
-    setValue(e.target.value);
+    onChange(e);
   };
 
   return (

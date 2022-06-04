@@ -1,7 +1,8 @@
 const Button = ({ label, type, onClick }) => {
   const onClickEvent = (e) => {
-    onClick();
-    console.log("on click!");
+    if (onClick) {
+      onClick(e);
+    }
   };
 
   return (

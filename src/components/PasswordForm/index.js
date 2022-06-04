@@ -1,62 +1,62 @@
+import { useState, useContext } from "react";
+import AppContext from "../../context/AppContext";
 import Button from "../input/Button";
 import Input from "../input/Input";
 import Select from "../input/Select";
 import PasswordInput from "../input/PasswordInput";
 
 const PasswordForm = ({ onSubmit }) => {
+  const { clients } = useContext(AppContext);
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [client, setClient] = useState("");
+
   const onSubmitEvent = (e) => {
-    console.log("submit!");
-    onSubmit(e);
+    e.preventDefault();
+    onSubmit({
+      name,
+      password,
+      client,
+    });
   };
 
   const inputConfig = {
     id: "name",
     label: "Name",
+    value: name,
     placeholder: "e.g. google.com",
     required: true,
     onChange: (e) => {
-      console.log("on change name");
+      setName(e.target.value);
     },
   };
 
   const inputPasswordConfig = {
     id: "password",
     label: "Password",
+    value: password,
     required: true,
     onChange: (e) => {
-      console.log("on change pw");
+      setPassword(e.target.value);
     },
   };
 
   const selectConfig = {
     id: "client",
     label: "Client",
+    value: client,
     required: true,
     onChange: (e) => {
-      console.log("on change client");
+      setClient(e.target.value);
     },
-    options: [
-      {
-        value: "A",
-        label: "A",
-      },
-      {
-        value: "B",
-        label: "B",
-      },
-
-      {
-        value: "C",
-        label: "C",
-      },
-    ],
+    options: clients.map((c, i) => {
+      return { value: i, label: c.name };
+    }),
   };
 
   const buttonConfig = {
     label: "Submit",
-    onClick: (e) => {
-      console.log("on click");
-    },
+    type: "submit",
   };
 
   return (

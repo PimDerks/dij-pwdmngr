@@ -1,11 +1,6 @@
-import { useState } from "react";
-
-const Select = ({ id, label, options, required, onChange }) => {
-  const [value, setValue] = useState("");
-
+const Select = ({ id, label, value, options, required, onChange }) => {
   const onChangeEvent = (e) => {
-    onChange();
-    setValue(e.target.value);
+    onChange(e);
   };
 
   return (

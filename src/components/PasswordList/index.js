@@ -1,14 +1,14 @@
 import PasswordListItem from "../PasswordListItem";
 import PasswordListEmpty from "../PasswordListEmpty";
 
-const PasswordList = ({ passwords }) => {
+const PasswordList = ({ passwords, onRemove }) => {
   if (!passwords.length) {
     return <PasswordListEmpty />;
   } else {
     return (
       <div>
         {passwords.map((pw) => (
-          <PasswordListItem key={`pw-${pw.id}`} {...pw} />
+          <PasswordListItem onRemove={onRemove} key={`pw-${pw.id}`} {...pw} />
         ))}
       </div>
     );

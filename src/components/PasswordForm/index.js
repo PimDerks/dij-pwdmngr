@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import AppContext from "../../context/AppContext";
 import Button from "../input/Button";
 import Input from "../input/Input";
@@ -72,6 +73,12 @@ const PasswordForm = ({ onSubmit }) => {
       <Button {...buttonConfig} />
     </form>
   );
+};
+
+PasswordForm.defaultProps = {};
+
+PasswordForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default PasswordForm;

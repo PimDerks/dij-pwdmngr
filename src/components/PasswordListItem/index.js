@@ -53,7 +53,11 @@ const PasswordListItem = ({
         <dd>{isShown ? password : "******"}</dd>
         <dt>Client</dt>
         <dd>
-          {clientId} {clientName} {clientColor}
+          <div
+            className="client-indicator"
+            style={{ backgroundColor: clientColor }}
+          ></div>
+          {clientName}
         </dd>
       </dl>
       <Button {...buttonRemoveConfig} />

@@ -1,15 +1,22 @@
 import { useState } from "react";
-
 import Button from "../input/Button";
 
-const PasswordListItem = ({ id, name, password, client, onRemove }) => {
+const PasswordListItem = ({
+  id,
+  name,
+  password,
+  clientId,
+  clientName,
+  clientColor,
+  onRemove,
+}) => {
   const [isShown, setIsShown] = useState(false);
 
   const buttonRemoveConfig = {
     label: "Remove password",
     onClick: (e) => {
       if (onRemove) {
-        onRemove({ id, name, password, client });
+        onRemove({ id });
       }
     },
   };
@@ -45,7 +52,9 @@ const PasswordListItem = ({ id, name, password, client, onRemove }) => {
         <dt>Password</dt>
         <dd>{isShown ? password : "******"}</dd>
         <dt>Client</dt>
-        <dd>{client}</dd>
+        <dd>
+          {clientId} {clientName} {clientColor}
+        </dd>
       </dl>
       <Button {...buttonRemoveConfig} />
       <Button {...buttonCopyConfig} />

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import AppContext from "../../context/AppContext";
 import Button from "../input/Button";
 import Input from "../input/Input";
@@ -10,6 +10,9 @@ const PasswordForm = ({ onSubmit }) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [client, setClient] = useState("");
+
+  // default value
+  const clientValue = client || 0;
 
   const onSubmitEvent = (e) => {
     e.preventDefault();
@@ -44,7 +47,7 @@ const PasswordForm = ({ onSubmit }) => {
   const selectConfig = {
     id: "client",
     label: "Client",
-    value: client,
+    value: clientValue,
     required: true,
     onChange: (e) => {
       setClient(e.target.value);
@@ -58,6 +61,10 @@ const PasswordForm = ({ onSubmit }) => {
     label: "Submit",
     type: "submit",
   };
+
+  useEffect(() => {
+    setClient(clientValue);
+  }, []);
 
   return (
     <form action="." onSubmit={onSubmitEvent}>

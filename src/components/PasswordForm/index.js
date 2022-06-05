@@ -12,6 +12,7 @@ const PasswordForm = ({ onSubmit, passwordToEdit }) => {
   const [password, setPassword] = useState(
     passwordToEdit ? passwordToEdit.password : ""
   );
+  const [id] = useState(passwordToEdit ? passwordToEdit.id : "");
   const [clientId, setClientId] = useState(
     passwordToEdit ? passwordToEdit.clientId : ""
   );
@@ -19,6 +20,7 @@ const PasswordForm = ({ onSubmit, passwordToEdit }) => {
   const onSubmitEvent = (e) => {
     e.preventDefault();
     onSubmit({
+      id,
       name,
       password,
       clientId,

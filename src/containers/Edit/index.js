@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import PasswordForm from "../../components/PasswordForm";
-import UserContext, { addPassword } from "../../context/UserContext";
+import UserContext, { editPassword } from "../../context/UserContext";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Edit = () => {
@@ -13,7 +13,7 @@ const Edit = () => {
   });
 
   const onSubmit = (pw) => {
-    setPasswords(addPassword(passwords, pw));
+    setPasswords(editPassword(passwords, pw));
     navigate("/");
   };
 

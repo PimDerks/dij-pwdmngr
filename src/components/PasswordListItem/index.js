@@ -54,32 +54,28 @@ const PasswordListItem = ({
   };
 
   return (
-    <div>
-      <dl>
-        <dt>Id</dt>
-        <dd>{id}</dd>
-        <dt>Name</dt>
-        <dd>{name}</dd>
-        <dt>Password</dt>
-        <dd>{isShown ? password : "******"}</dd>
+    <tr>
+      <td>{id}</td>
+      <td>{name}</td>
+      <td>{isShown ? password : "******"}</td>
+      <td>
         {clientName && (
           <>
-            <dt>Client</dt>
-            <dd>
-              <div
-                className="client-indicator"
-                style={{ backgroundColor: clientColor }}
-              ></div>
-              {clientName}
-            </dd>
+            <div
+              className="client-indicator"
+              style={{ backgroundColor: clientColor }}
+            ></div>
+            {clientName}
           </>
         )}
-      </dl>
-      <Button {...buttonRemoveConfig} />
-      <Button {...buttonCopyConfig} />
-      <Button {...buttonShowConfig} />
-      <Button {...buttonEditConfig} />
-    </div>
+      </td>
+      <td>
+        <Button {...buttonRemoveConfig} />
+        <Button {...buttonCopyConfig} />
+        <Button {...buttonShowConfig} />
+        <Button {...buttonEditConfig} />
+      </td>
+    </tr>
   );
 };
 

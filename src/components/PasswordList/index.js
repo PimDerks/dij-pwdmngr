@@ -25,16 +25,27 @@ const PasswordList = ({ passwords, onRemove, onEdit }) => {
     return <PasswordListEmpty />;
   } else {
     return (
-      <div>
-        {mappedPasswords.map((pw) => (
-          <PasswordListItem
-            onEdit={onEdit}
-            onRemove={onRemove}
-            key={`pw-${pw.id}`}
-            {...pw}
-          />
-        ))}
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Password</th>
+            <th scope="col">Client</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {mappedPasswords.map((pw) => (
+            <PasswordListItem
+              onEdit={onEdit}
+              onRemove={onRemove}
+              key={`pw-${pw.id}`}
+              {...pw}
+            />
+          ))}
+        </tbody>
+      </table>
     );
   }
 };

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import PasswordListItem from "../PasswordListItem";
 import PasswordListEmpty from "../PasswordListEmpty";
 import AppContext from "../../context/AppContext";
+import passwordProps from "../../propTypes/password";
 
 const PasswordList = ({ passwords, onRemove, onEdit }) => {
   const { clients } = useContext(AppContext);
@@ -55,16 +56,7 @@ PasswordList.defaultProps = {
 };
 
 PasswordList.propTypes = {
-  passwords: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      password: PropTypes.string.isRequired,
-      clientId: PropTypes.string,
-      clientColor: PropTypes.string,
-      clientName: PropTypes.string,
-    })
-  ),
+  passwords: PropTypes.arrayOf(PropTypes.exact(passwordProps)),
   onEdit: PropTypes.func,
   onRemove: PropTypes.func,
 };

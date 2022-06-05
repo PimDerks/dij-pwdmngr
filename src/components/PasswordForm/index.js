@@ -5,6 +5,7 @@ import Button from "../input/Button";
 import Input from "../input/Input";
 import Select from "../input/Select";
 import PasswordInput from "../input/PasswordInput";
+import passwordProps from "../../propTypes/password";
 
 const PasswordForm = ({ onSubmit, passwordToEdit }) => {
   const { clients } = useContext(AppContext);
@@ -85,14 +86,7 @@ PasswordForm.defaultProps = {};
 
 PasswordForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  passwordToEdit: PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    clientId: PropTypes.string,
-    clientColor: PropTypes.string,
-    clientName: PropTypes.string,
-  }),
+  passwordToEdit: PropTypes.exact(passwordProps),
 };
 
 export default PasswordForm;

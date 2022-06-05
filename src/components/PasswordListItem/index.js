@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "../input/Button";
+import passwordProps from "../../propTypes/password";
 
 const PasswordListItem = ({
   id,
@@ -80,14 +81,12 @@ const PasswordListItem = ({
 };
 
 PasswordListItem.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  clientId: PropTypes.string,
-  clientName: PropTypes.string,
-  clientColor: PropTypes.string,
-  onRemove: PropTypes.func,
-  onEdit: PropTypes.func,
+  ...{
+    onRemove: PropTypes.func,
+    onEdit: PropTypes.func,
+    timestamp: PropTypes.string,
+  },
+  ...passwordProps,
 };
 
 export default PasswordListItem;

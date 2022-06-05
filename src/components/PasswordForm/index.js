@@ -6,11 +6,15 @@ import Input from "../input/Input";
 import Select from "../input/Select";
 import PasswordInput from "../input/PasswordInput";
 
-const PasswordForm = ({ onSubmit }) => {
+const PasswordForm = ({ onSubmit, passwordToEdit }) => {
   const { clients } = useContext(AppContext);
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [clientId, setClientId] = useState("");
+  const [name, setName] = useState(passwordToEdit ? passwordToEdit.name : "");
+  const [password, setPassword] = useState(
+    passwordToEdit ? passwordToEdit.password : ""
+  );
+  const [clientId, setClientId] = useState(
+    passwordToEdit ? passwordToEdit.clientId : ""
+  );
 
   const onSubmitEvent = (e) => {
     e.preventDefault();
@@ -79,6 +83,14 @@ PasswordForm.defaultProps = {};
 
 PasswordForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  passwordToEdit: PropTypes.exact({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    clientId: PropTypes.string,
+    clientColor: PropTypes.string,
+    clientName: PropTypes.string,
+  }),
 };
 
 export default PasswordForm;

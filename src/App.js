@@ -4,6 +4,7 @@ import UserState from "./context/UserState";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Add from "./containers/Add";
+import Edit from "./containers/Edit";
 import Overview from "./containers/Overview";
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
             <Routes>
               <Route exact path="/" element={<Overview />} />
               <Route exact path="/add" element={<Add />} />
+              <Route exact path="/edit/:id" element={<Edit />} />
             </Routes>
           </Router>
         </UserState>

@@ -4,7 +4,7 @@ import PasswordListItem from "../PasswordListItem";
 import PasswordListEmpty from "../PasswordListEmpty";
 import AppContext from "../../context/AppContext";
 
-const PasswordList = ({ passwords, onRemove }) => {
+const PasswordList = ({ passwords, onRemove, onEdit }) => {
   const { clients } = useContext(AppContext);
 
   // Attach client data to passwords
@@ -27,7 +27,12 @@ const PasswordList = ({ passwords, onRemove }) => {
     return (
       <div>
         {mappedPasswords.map((pw) => (
-          <PasswordListItem onRemove={onRemove} key={`pw-${pw.id}`} {...pw} />
+          <PasswordListItem
+            onEdit={onEdit}
+            onRemove={onRemove}
+            key={`pw-${pw.id}`}
+            {...pw}
+          />
         ))}
       </div>
     );
@@ -49,6 +54,8 @@ PasswordList.propTypes = {
       clientName: PropTypes.string,
     })
   ),
+  onEdit: PropTypes.func,
+  onRemove: PropTypes.func,
 };
 
 export default PasswordList;

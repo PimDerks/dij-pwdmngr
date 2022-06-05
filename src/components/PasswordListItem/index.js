@@ -10,12 +10,22 @@ const PasswordListItem = ({
   clientName,
   clientColor,
   onRemove,
+  onEdit,
 }) => {
   const [isShown, setIsShown] = useState(false);
 
+  const buttonEditConfig = {
+    label: "Edit password",
+    onClick: () => {
+      if (onEdit) {
+        onEdit({ id });
+      }
+    },
+  };
+
   const buttonRemoveConfig = {
     label: "Remove password",
-    onClick: (e) => {
+    onClick: () => {
       if (onRemove) {
         onRemove({ id });
       }
@@ -33,10 +43,10 @@ const PasswordListItem = ({
     label: "Copy password to clipboard",
     onClick: () => {
       navigator.clipboard.writeText(password).then(
-        function () {
+        () => {
           console.log("Async: Copying to clipboard was successful!");
         },
-        function (err) {
+        (err) => {
           console.error("Async: Could not copy text: ", err);
         }
       );
@@ -68,6 +78,7 @@ const PasswordListItem = ({
       <Button {...buttonRemoveConfig} />
       <Button {...buttonCopyConfig} />
       <Button {...buttonShowConfig} />
+      <Button {...buttonEditConfig} />
     </div>
   );
 };
@@ -80,6 +91,7 @@ PasswordListItem.propTypes = {
   clientName: PropTypes.string,
   clientColor: PropTypes.string,
   onRemove: PropTypes.func,
+  onEdit: PropTypes.func,
 };
 
 export default PasswordListItem;

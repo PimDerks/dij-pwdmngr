@@ -7,14 +7,18 @@ const AppState = ({ children }) => {
 
   // Fetch clients on mount
   useEffect(() => {
-    fetch("/api/clients.json").then((response) =>
-      response.json().then((data) => {
-        const clientsData = data.map((client) => {
+    fetch(
+      `https://api.allorigins.win/get?url=${encodeURIComponent(
+        "https://pastebin.com/raw/zSFTiVWr"
+      )}`
+    ).then((response) => {
+      response.json().then(({ contents }) => {
+        const clientsData = JSON.parse(contents).map((client) => {
           return { id: slugify(client.name), ...client };
         });
         setClients(clientsData);
-      })
-    );
+      });
+    });
   }, []);
 
   return (

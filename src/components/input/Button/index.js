@@ -1,5 +1,10 @@
 import PropTypes from "prop-types";
+
 const Button = ({ label, type, onClick }) => {
+  if (!label) {
+    throw Error("No label prop provided");
+  }
+
   const onClickEvent = (e) => {
     if (onClick) {
       onClick(e);

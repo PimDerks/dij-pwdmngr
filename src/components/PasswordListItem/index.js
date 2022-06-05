@@ -52,14 +52,18 @@ const PasswordListItem = ({
         <dd>{name}</dd>
         <dt>Password</dt>
         <dd>{isShown ? password : "******"}</dd>
-        <dt>Client</dt>
-        <dd>
-          <div
-            className="client-indicator"
-            style={{ backgroundColor: clientColor }}
-          ></div>
-          {clientName}
-        </dd>
+        {clientName && (
+          <>
+            <dt>Client</dt>
+            <dd>
+              <div
+                className="client-indicator"
+                style={{ backgroundColor: clientColor }}
+              ></div>
+              {clientName}
+            </dd>
+          </>
+        )}
       </dl>
       <Button {...buttonRemoveConfig} />
       <Button {...buttonCopyConfig} />

@@ -23,7 +23,7 @@ const PasswordInput = ({ id, label, value, required, onChange }) => {
         onChange={onChangeEvent}
       />
       <button type="button" onClick={onClickPasswordToggle} aria-controls={id}>
-        {showPassword ? "Hide passworld" : "Show password"}
+        {showPassword ? "Hide" : "Show"}
       </button>
     </div>
   );

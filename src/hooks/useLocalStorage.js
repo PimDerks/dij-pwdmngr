@@ -6,6 +6,10 @@ const getStorageValue = (key, defaultValue) => {
   return initial || defaultValue;
 };
 
+const removeStorageValue = (key) => {
+  localStorage.removeItem(key);
+};
+
 const useLocalStorage = (key, defaultValue) => {
   const [value, setValue] = useState(() => {
     return getStorageValue(key, defaultValue);
@@ -19,3 +23,4 @@ const useLocalStorage = (key, defaultValue) => {
 };
 
 export default useLocalStorage;
+export { getStorageValue, removeStorageValue };

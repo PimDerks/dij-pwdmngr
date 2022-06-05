@@ -10,6 +10,7 @@ const PasswordListItem = ({
   clientId,
   clientName,
   clientColor,
+  timestamp,
   onRemove,
   onEdit,
 }) => {
@@ -70,6 +71,7 @@ const PasswordListItem = ({
           </>
         )}
       </td>
+      <td>{timestamp}</td>
       <td>
         <Button {...buttonRemoveConfig} />
         <Button {...buttonCopyConfig} />

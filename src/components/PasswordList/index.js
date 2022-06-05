@@ -33,6 +33,7 @@ const PasswordList = ({ passwords, onRemove, onEdit }) => {
             <th scope="col">Name</th>
             <th scope="col">Password</th>
             <th scope="col">Client</th>
+            <th scope="col">Timestamp</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>

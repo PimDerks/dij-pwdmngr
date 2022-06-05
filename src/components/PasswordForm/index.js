@@ -20,12 +20,13 @@ const PasswordForm = ({ onSubmit, passwordToEdit }) => {
 
   const onSubmitEvent = (e) => {
     e.preventDefault();
-    onSubmit({
-      id,
-      name,
-      password,
-      clientId,
-    });
+    let data = { name, password, clientId };
+
+    if (passwordToEdit) {
+      data = { id, ...data };
+    }
+
+    onSubmit(data);
   };
 
   const inputConfig = {

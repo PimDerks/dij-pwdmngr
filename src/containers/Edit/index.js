@@ -8,8 +8,8 @@ const Edit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const pw = passwords.find((pw) => {
-    return pw.id === parseInt(id);
+  const pw = passwords.find((p) => {
+    return p.id === id;
   });
 
   const onSubmit = (pw) => {

@@ -3,8 +3,12 @@ import { createContext } from "react";
 const UserContext = createContext();
 
 const addPassword = (passwords, passwordToAdd) => {
-  const id = passwords.length + 1;
-  return [...passwords, { id, ...passwordToAdd }];
+  // Add additional props to pw
+  const addedProps = {
+    id: Date.now().toString(),
+    timestamp: new Date().toISOString(),
+  };
+  return [...passwords, { ...addedProps, ...passwordToAdd }];
 };
 
 const editPassword = (passwords, passwordToEdit) => {

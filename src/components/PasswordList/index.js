@@ -3,7 +3,7 @@ import { useContext } from "react";
 import PasswordListItem from "../PasswordListItem";
 import PasswordListEmpty from "../PasswordListEmpty";
 import AppContext from "../../context/AppContext";
-import passwordProps from "../../propTypes/password";
+import { password as passwordProps } from "../../propTypes/password";
 
 const PasswordList = ({ passwords, onRemove, onEdit }) => {
   const { clients } = useContext(AppContext);

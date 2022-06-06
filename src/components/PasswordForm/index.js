@@ -5,7 +5,7 @@ import Button from "../input/Button";
 import Input from "../input/Input";
 import Select from "../input/Select";
 import PasswordInput from "../input/PasswordInput";
-import passwordProps from "../../propTypes/password";
+import { password as passwordProps } from "../../propTypes/password";
 
 const PasswordForm = ({ onSubmit, passwordToEdit }) => {
   const { clients } = useContext(AppContext);

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export default {
+export const password = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,

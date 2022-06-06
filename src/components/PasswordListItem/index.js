@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "../input/Button";
-import passwordProps from "../../propTypes/password";
+import { password as passwordProps } from "../../propTypes/password";
 
 const PasswordListItem = ({
   id,

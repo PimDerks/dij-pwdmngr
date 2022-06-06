@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import PasswordListItem from "./index";
 
 const pw = {
-  id: 1,
+  id: "1",
   name: "name",
   password: "pw",
   clientId: "client-id",
@@ -13,7 +13,7 @@ const pw = {
 };
 
 const pwNoClient = {
-  id: 1,
+  id: "1",
   name: "name",
   password: "pw",
   clientId: null,
@@ -22,11 +22,23 @@ const pwNoClient = {
 };
 
 test("renders the element", () => {
-  render(<PasswordListItem {...pw} />);
+  render(
+    <table>
+      <tbody>
+        <PasswordListItem {...pw} />
+      </tbody>
+    </table>
+  );
 });
 
 test("renders the element without client details when details are not available", () => {
-  const { queryByText } = render(<PasswordListItem {...pwNoClient} />);
+  const { queryByText } = render(
+    <table>
+      <tbody>
+        <PasswordListItem {...pwNoClient} />
+      </tbody>
+    </table>
+  );
   const clientNode = queryByText(/Client/i);
   expect(clientNode).toBeNull();
 });
@@ -36,7 +48,13 @@ test("it hides the password by default and reveals it after clicking the button"
   const handleClick = jest.spyOn(React, "useState");
   handleClick.mockImplementation((isShown) => [isShown, setIsShown]);
 
-  const { getByText } = render(<PasswordListItem {...pw} />);
+  const { getByText } = render(
+    <table>
+      <tbody>
+        <PasswordListItem {...pw} />
+      </tbody>
+    </table>
+  );
   userEvent.click(getByText(/Show/i));
   expect(setIsShown).toBeCalled();
 
@@ -47,7 +65,13 @@ test("it hides the password by default and reveals it after clicking the button"
 test("it triggers the onRemove prop when the remove button is clicked", () => {
   const onRemove = jest.fn();
   const options = { onRemove, ...pw };
-  const { getByText } = render(<PasswordListItem {...options} />);
+  const { getByText } = render(
+    <table>
+      <tbody>
+        <PasswordListItem {...options} />
+      </tbody>
+    </table>
+  );
   userEvent.click(getByText(/Remove/i));
   expect(onRemove).toBeCalled();
 });

@@ -5,11 +5,8 @@ import PasswordListEmpty from "../PasswordListEmpty";
 import AppContext from "../../context/AppContext";
 import { password as passwordProps } from "../../propTypes/password";
 
-const PasswordList = ({ passwords, onRemove, onEdit }) => {
-  const { clients } = useContext(AppContext);
-
-  // Attach client data to passwords
-  const mappedPasswords = passwords.map((pw) => {
+const mapClientsToPasswords = (passwords, clients) => {
+  return passwords.map((pw) => {
     const client = clients.filter((c) => {
       return c.id === pw.clientId;
     });
@@ -21,6 +18,13 @@ const PasswordList = ({ passwords, onRemove, onEdit }) => {
       return pw;
     }
   });
+};
+
+const PasswordList = ({ passwords, onRemove, onEdit }) => {
+  const { clients } = useContext(AppContext);
+
+  // Attach client data to passwords
+  const mappedPasswords = mapClientsToPasswords(passwords, clients);
 
   if (!mappedPasswords.length) {
     return <PasswordListEmpty />;
@@ -63,3 +67,4 @@ PasswordList.propTypes = {
 };
 
 export default PasswordList;
+export { mapClientsToPasswords };
